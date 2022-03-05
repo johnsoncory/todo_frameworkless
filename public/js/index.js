@@ -1,14 +1,21 @@
-let items_list = [
-  ["test", true],
-  ["complete this app", false],
-];
+let items_list = [];
+
+function getData() {
+  return fetch("http://localhost:8000/api/todos/", {
+    method: "GET",
+    mode: "cors",
+  })
+    .then((r) => r.json())
+    .then((data) => items_list.push(...data))
+    .catch((e) => console.log(e));
+}
 
 function addItem() {
   let newItem = document.getElementById("item").value;
   if (!newItem) {
     return;
   }
-  items_list.push([newItem, false]);
+  items_list.push({ item: newItem, complete: false });
 
   populateTable();
   document.getElementById("item").value = "";
@@ -22,17 +29,18 @@ function populateTable() {
   }
   //place new list into table
   for (let i = 0; i < items_list.length; i++) {
+    console.log(items_list[i]);
     let newRow = table.insertRow();
     let item = newRow.insertCell(0);
     let complete = newRow.insertCell(1);
     let options = newRow.insertCell(2);
 
-    item.innerHTML = items_list[i][0];
+    item.innerHTML = items_list[i].item;
     // Set up the complete checkbox
     let chkbox = document.createElement("input");
     chkbox.setAttribute("type", "checkbox");
     chkbox.setAttribute("id", "complete");
-    chkbox.checked = items_list[i][1];
+    chkbox.checked = items_list[i].complete;
     complete.appendChild(chkbox);
     //set up the Edit and Remove buttons
     let editBtn = document.createElement("button");
@@ -46,4 +54,10 @@ function populateTable() {
   }
 }
 
-populateTable();
+function initialize() {
+  getData()
+    .then(populateTable)
+    .catch((e) => console.log(e));
+}
+
+initialize();
