@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import routes from "./routes/todoRoutes.js";
+import routes from "./backend/routes/todoRoutes.js";
 
 const app = express();
 const PORT = 8000;
@@ -18,5 +18,5 @@ app.use(bodyParser.json());
 
 routes(app);
 
-app.use(express.static("src"));
+app.use(express.static("public"));
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
