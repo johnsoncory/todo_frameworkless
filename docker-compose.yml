@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web-app:
+    restart: always
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    expose:
+      - "27017"
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"

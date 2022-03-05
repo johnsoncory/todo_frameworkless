@@ -1,0 +1,57 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button {
+  border: none;
+  padding: 5px 15px;
+  text-align: center;
+  border-radius: 6px;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+tbody {
+  font-size: 12px;
+}
+
+td {
+  border: 1px solid;
+  padding: 3px 10px;
+}
+
+th {
+  font-style: bold;
+  font-size: 14px;
+  border: 1px solid;
+  padding: 3px;
+  background-color: lightgray;
+}
+
+input {
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 12px;
+  padding-left: 10px;
+  line-height: 30px;
+  width: 90%;
+}
+
+#deleteBtn {
+  background-color: #d9534f;
+}
+
+#editBtn {
+  background-color: #5cb85c;
+}
+
+#instructions {
+  color: blue;
+  font-size: 12px;
+  font-style: italic;
+}

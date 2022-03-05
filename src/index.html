@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ToDo - Frameworkless</title>
+  </head>
+  <body>
+    <h1>To Do List</h1>
+    <form action="javascript:addItem()">
+      <input type="text" id="item" name="item" placeholder="Add new item..." />
+    </form>
+    <p id="instructions">Hit enter to submit</p>
+    <br />
+    <table id="items">
+      <thead>
+        <th>Item</th>
+        <th>Complete?</th>
+        <th>Options</th>
+      </thead>
+      <tbody id="items_list"></tbody>
+    </table>
+    <div id="result"></div>
+  </body>
+  <script src="js/index.js"></script>
+</html>

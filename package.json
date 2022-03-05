@@ -1,0 +1,27 @@
+{
+  "name": "todo_frameworkless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnsoncory/todo_frameworkless.git"
+  },
+  "author": "Cory Johnson <coryaj@outlook.com> (https://johnsoncory.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnsoncory/todo_frameworkless/issues"
+  },
+  "homepage": "https://github.com/johnsoncory/todo_frameworkless#readme",
+  "dependencies": {
+    "body-parser": "1.19.2",
+    "express": "4.17.3",
+    "mongoose": "6.2.4",
+    "nodemon": "2.0.15"
+  }
+}
