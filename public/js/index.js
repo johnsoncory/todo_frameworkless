@@ -15,9 +15,18 @@ function addItem() {
   if (!newItem) {
     return;
   }
-  items_list.push({ item: newItem, complete: false });
+  let newTodo = { item: newItem, complete: false };
+  fetch("http://localhost:8000/api/todos/", {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newTodo),
+  })
+    .then((r) => r.json())
+    .then((data) => items_list.push(data))
+    .then(populateTable)
+    .catch((e) => console.log(e));
 
-  populateTable();
   document.getElementById("item").value = "";
 }
 
@@ -29,7 +38,6 @@ function populateTable() {
   }
   //place new list into table
   for (let i = 0; i < items_list.length; i++) {
-    console.log(items_list[i]);
     let newRow = table.insertRow();
     let item = newRow.insertCell(0);
     let complete = newRow.insertCell(1);
