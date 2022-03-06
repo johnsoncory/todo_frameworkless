@@ -16,7 +16,7 @@ function addItem() {
     return;
   }
   let newTodo = { item: newItem, complete: false };
-  fetch("http://localhost:8000/api/todos/", {
+  fetch("http://localhost:8000/api/todos/add/", {
     method: "POST",
     mode: "cors",
     headers: { "Content-Type": "application/json" },
@@ -30,12 +30,27 @@ function addItem() {
   document.getElementById("item").value = "";
 }
 
+function updateComplete(id) {
+  let updatedItem = items_list.find((x) => x._id == id);
+  updatedItem.complete = !updatedItem.complete;
+  console.log(updatedItem);
+  fetch(`http://localhost:8000/api/todos/update/${id}`, {
+    method: "PUT",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedItem),
+  })
+    .then(populateTable)
+    .catch((e) => console.log(e));
+}
+
 function populateTable() {
   let table = document.getElementById("items_list");
   // clear out existing table rows
   while (table.hasChildNodes()) {
     table.removeChild(table.firstChild);
   }
+
   //place new list into table
   for (let i = 0; i < items_list.length; i++) {
     let newRow = table.insertRow();
@@ -48,6 +63,7 @@ function populateTable() {
     let chkbox = document.createElement("input");
     chkbox.setAttribute("type", "checkbox");
     chkbox.setAttribute("id", "complete");
+    chkbox.setAttribute("onChange", `updateComplete("${items_list[i]._id}")`);
     chkbox.checked = items_list[i].complete;
     complete.appendChild(chkbox);
     //set up the Edit and Remove buttons
