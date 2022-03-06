@@ -20,6 +20,36 @@
       </form>
       <p id="instructions">Hit enter to submit</p>
       <br />
+      <form>
+        <group class="filters">
+          Show:
+          <input
+            type="radio"
+            id="incomplete"
+            name="filter"
+            value="incomplete"
+            onclick="updateFilter(this)"
+          />
+          <label for="incomplete"><span></span>incomplete items</label>
+          <input
+            type="radio"
+            id="complete"
+            name="filter"
+            value="complete"
+            onclick="updateFilter(this)"
+          />
+          <label for="complete"><span></span>complete items</label>
+          <input
+            type="radio"
+            id="all"
+            name="filter"
+            value="all"
+            onclick="updateFilter(this)"
+            checked="checked"
+          />
+          <label for="all"><span></span>all items</label>
+        </group>
+      </form>
       <table id="items">
         <thead>
           <th>Item</th>
