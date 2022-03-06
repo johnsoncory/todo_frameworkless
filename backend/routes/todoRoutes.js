@@ -2,6 +2,7 @@ import {
   addNewTodo,
   getTodos,
   updateTodo,
+  deleteTodo,
 } from "../controllers/TodoController.js";
 
 const routes = (app) => {
@@ -18,6 +19,8 @@ const routes = (app) => {
 
   //PUT endpoint
   app.route("/api/todos/update/:todoId").put(updateTodo);
+
+  app.route("/api/todos/delete/:todoId").delete(deleteTodo);
 };
 
 export default routes;

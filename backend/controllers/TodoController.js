@@ -35,3 +35,13 @@ export const updateTodo = (req, res) => {
     }
   );
 };
+
+export const deleteTodo = (req, res) => {
+  Todo.findOneAndDelete({ _id: req.params.todoId }, (err, todo) => {
+    if (err) {
+      res.send(err);
+    }
+    console.log(`Todo deleted: ${todo}`);
+    res.json(todo);
+  });
+};
