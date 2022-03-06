@@ -50,6 +50,21 @@ function updateFilter(item) {
   populateTable();
 }
 
+function deleteItem(id) {
+  fetch(`http://localhost:8000/api/todos/delete/${id}`, {
+    method: "DELETE",
+    mode: "cors",
+  })
+    .then(
+      new Promise((res, _) => {
+        items_list = items_list.filter((x) => x._id !== id);
+        res(items_list);
+      })
+    )
+    .then(populateTable)
+    .catch((e) => console.log(e));
+}
+
 function populateTable() {
   let table = document.getElementById("items_list");
   // clear out existing table rows
@@ -85,6 +100,7 @@ function populateTable() {
     options.appendChild(editBtn);
     let deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("id", "deleteBtn");
+    deleteBtn.setAttribute("onClick", `deleteItem("${items_list[i]._id}")`);
     deleteBtn.innerHTML = "Delete";
     options.appendChild(deleteBtn);
   }
