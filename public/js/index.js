@@ -1,4 +1,5 @@
 let items_list = [];
+let filter = "all";
 
 function getData() {
   return fetch("http://localhost:8000/api/todos/", {
@@ -73,6 +74,12 @@ function populateTable() {
 
   //place new list into table
   for (let i = 0; i < items_list.length; i++) {
+    if (
+      (filter == "complete" && !items_list[i].complete) ||
+      (filter == "incomplete" && items_list[i].complete)
+    )
+      continue;
+
     let newRow = table.insertRow();
     let item = newRow.insertCell(0);
     let complete = newRow.insertCell(1);
