@@ -21,3 +21,17 @@ export const getTodos = (req, res) => {
     res.json(todo);
   });
 };
+
+export const updateTodo = (req, res) => {
+  Todo.findByIdAndUpdate(
+    { _id: req.params.todoId },
+    req.body,
+    { new: false },
+    (err, todo) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(todo);
+    }
+  );
+};

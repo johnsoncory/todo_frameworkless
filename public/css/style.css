@@ -16,6 +16,16 @@ table {
   border-collapse: collapse;
 }
 
+table tr td {
+  width: 15%;
+  text-align: center;
+}
+
+table tr td:first-child {
+  width: 70%;
+  text-align: left;
+}
+
 tbody {
   font-size: 12px;
 }
@@ -40,6 +50,11 @@ input {
   padding-left: 10px;
   line-height: 30px;
   width: 90%;
+}
+
+.container {
+  padding: 30px;
+  text-align: center;
 }
 
 #deleteBtn {
